@@ -1,3 +1,4 @@
+//gcc Etude.c EtudeInCMaj.c MovieData.c clrscr.c -lpthread -o etude
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +7,7 @@
 
 #include "EtudeInCMaj.h"
 #include "MovieData.h"
-
+#include "clrscr.h"
 #ifndef FRAMECOUNTVID
 #define FRAMECOUNTVID 410
 #endif
@@ -29,7 +30,7 @@ int main(int argc, char const *argv[]) {
 	
 	int Frame;
 
-	system("cls");
+	clrscr();
 
 	pthread_t thread_id;
 	if(pthread_create(&thread_id, NULL, playMusicInThread, NULL)){
@@ -46,7 +47,7 @@ int main(int argc, char const *argv[]) {
 			return EXIT_FAILURE;
 		}
 		Sleep(FRAMETIME);
-		system("cls");
+		clrscr();
 	}
 
 	 if(pthread_join(thread_id, NULL)) {
